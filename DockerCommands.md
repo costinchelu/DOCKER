@@ -161,7 +161,9 @@ docker node demote <node name>
 ```dockerfile
 docker volume create v1mongo
 docker container run --name mongo1 -d -p 27017:27017 --expose 27017 -e MONGO_INITDB_ROOT_USERNAME=mongo -e MONGO_INITDB_ROOT_PASSWORD=mongo -v v1mongo:/data/db mongo
+
 docker logs -f mongo1
+
 docker container stop mongo1
 docker container start mongo1
 
@@ -172,7 +174,9 @@ docker container start mongo1
 ```dockerfile
 docker volume create v1mysql
 docker container run --name mysql1 -d -p 3307:3306 --expose 3307 -e MYSQL_ROOT_PASSWORD=mysql123 -v v1mysql:/var/lib/mysql mysql
+
 docker logs -f mysql1
+
 docker container stop mysql1
 docker container start mysql1
 ```
@@ -180,7 +184,17 @@ docker container start mysql1
 ## MICROSOFT SQL SERVER container
 
 ```dockerfile
-docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=PASSword123..." -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
+docker run --name sqlserver1 -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=PASSword123..." -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
+
+# user: sa
+```
+
+## POSTGRESQL container
+
+```dockerfile
+docker run -d --name postgres1 -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword postgres
+
+# user: postgres
 ```
 
 ## RABBITMQ container
