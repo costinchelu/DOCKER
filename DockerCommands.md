@@ -66,6 +66,18 @@ docker container disconnect webhost
 docker network inspect my_app_net
 ```
 
+## VOLUMES
+```dockerfile
+# To specify a local volume for a container we can use:
+
+-v /host/directory:/container/directory
+
+# for example:
+docker run -it -v C:\Users\Username\Desktop:/root/home --name my_container image1
+# This would allow the container to write files to /root/home and have them appear on the user Username's desktop
+```
+
+
 ## IMAGE BUILDING (FROM A DOCKERFILE)
 ```dockerfile
 # from the folder of the dockerfile:
